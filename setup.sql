@@ -160,6 +160,9 @@ as
         cortex_db.data.support_cases
 );
 
+show cortex search services;
+
+GRANT USAGE ON CORTEX SEARCH SERVICE SUPPORT_CASES_SEARCH TO ROLE ATTENDEE_ROLE;
 
 -- aggregated support case summary using ai sql
 
