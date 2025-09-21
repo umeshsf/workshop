@@ -1,7 +1,7 @@
 -- setup the profile with email address , default database, schema and warehouse. 
 
 
-use role accountadmin
+use role accountadmin;
 -- enable cortex analyst
 GRANT DATABASE ROLE SNOWFLAKE.CORTEX_USER TO ROLE attendee_role;
 GRANT CREATE AGENT ON SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS TO role attendee_role;
