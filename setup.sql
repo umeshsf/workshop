@@ -83,7 +83,7 @@ def send_email(session, recipient_email, subject, body):
 $$;
 
 
-call send_email('umesh.patel@snowflake.com','test','hello');
+call send_email('your_email_address.com','test','hello');
 
 show tables;
 
