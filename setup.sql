@@ -24,12 +24,12 @@ create or replace stage cortex_db.data.semantic_models
 -- create tables with data
 create or replace table cortex_db.data.marketing_campaign_metrics as 
 select * from ORGDATACLOUD$INTERNAL$MEDIA_DEMO_DATASET.MARKETING.marketing_campaign_metrics;
-
+alter table cortex_db.data.marketing_campaign_metrics add primary key (category);
 select * from cortex_db.data.marketing_campaign_metrics;
 
 create or replace table cortex_db.data.products as
 select * from ORGDATACLOUD$INTERNAL$MEDIA_DEMO_DATASET.MARKETING.products;
-
+alter table products add primary key(product_id);
 select * from products;
 
 create or replace table cortex_db.data.sales as
