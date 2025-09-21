@@ -1,11 +1,9 @@
 -- setup the profile with email address , default database, schema and warehouse. 
 
 use role accountadmin;
-
+ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION' ;
 -- enable cortex analyst
 GRANT DATABASE ROLE SNOWFLAKE.CORTEX_USER TO ROLE attendee_role;
-
-ALTER ACCOUNT SET CORTEX_ENABLED_CROSS_REGION = 'ANY_REGION' ;
 
 -- CREATE SAMPLE DATABASE not needed but need if you want to do extra work
 CREATE DATABASE IF NOT EXISTS SNOWFLAKE_SAMPLE_DATA FROM SHARE SFC_SAMPLES.SAMPLE_DATA;
