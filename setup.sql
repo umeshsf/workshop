@@ -8,6 +8,7 @@ CREATE SCHEMA IF NOT EXISTS snowflake_intelligence.agents;
 -- Allow anyone to see the agents in this schema
 GRANT USAGE ON DATABASE snowflake_intelligence TO ROLE PUBLIC;
 GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE PUBLIC;
+GRANT CREATE AGENT ON SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS TO role attendee_role;
 
 -- we will have our data here
 create or replace database cortex_db;
