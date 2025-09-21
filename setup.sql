@@ -6,6 +6,7 @@ use role attendee_role;
 CREATE DATABASE IF NOT EXISTS snowflake_intelligence;
 CREATE SCHEMA IF NOT EXISTS snowflake_intelligence.agents;
 -- Allow anyone to see the agents in this schema
+-- Please note that we are granting access to the public role,  so all users can see  the agents
 GRANT USAGE ON DATABASE snowflake_intelligence TO ROLE PUBLIC;
 GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE PUBLIC;
 GRANT CREATE AGENT ON SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS TO role attendee_role;
@@ -129,7 +130,11 @@ create or replace semantic view SALES_AND_MARKETING_SVW
 
 show semantic views;
 
+show cortex search services in database cortex_db ;
 
+show agents in account;
+
+desc agent snowflake_intelligence.agents.marketing_ai;
 
 
 -- cortex search
@@ -146,16 +151,17 @@ attributes
 warehouse = default_wh 
 embedding_model = 'snowflake-arctic-embed-m-v1.5' 
 target_lag = '24 hour' 
-initialize=on_schedule 
+initialize=on_create
 as 
 (
 	SELECT
-		TRANSCRIPT,ID,TITLE,PRODUCT
-	FROM cortex_db.data.support_cases
+		TRANSCRIPT, ID, TITLE, PRODUCT
+	FROM 
+        cortex_db.data.support_cases
 );
 
 
--- aggregated support case summary 
+-- aggregated support case summary using ai sql
 
 create or replace table AGGREGATED_SUPPORT_CASES_SUMMARY as
  select 
@@ -165,7 +171,6 @@ create or replace table AGGREGATED_SUPPORT_CASES_SUMMARY as
 select * from AGGREGATED_SUPPORT_CASES_SUMMARY;
 
 
-show cortex searches;
 
 
 
