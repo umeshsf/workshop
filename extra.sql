@@ -6,6 +6,8 @@
 -- click on GET to accept the standard terms
 -- first time you must use get, next time you can create using the following command. 
 
+CALL SYSTEM$ACCEPT_LEGAL_TERMS('DATA_EXCHANGE_LISTING', 'GZSTZ67BY9OQ4');
+
 create or replace DATABASE snowflake_documentation FROM LISTING GZSTZ67BY9OQ4;
 GRANT IMPORTED PRIVILEGES ON DATABASE snowflake_documentation  TO ROLE public;
 
