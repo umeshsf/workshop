@@ -16,6 +16,8 @@ GRANT IMPORTED PRIVILEGES ON DATABASE snowflake_documentation  TO ROLE public;
 show cortex search services in database snowflake_documentation;
 
 -- create semantic view for cortex analyst;
+-- near the end of the code, there is a line -  "warehouse": "DEFAULT_WH",
+-- Change it to your warehouse name.
 
 
 create or replace semantic view CORTEX_DB.PUBLIC.COST_PERFORMANCE_ASSISTANT
