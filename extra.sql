@@ -11,15 +11,12 @@ CALL SYSTEM$ACCEPT_LEGAL_TERMS('DATA_EXCHANGE_LISTING', 'GZSTZ67BY9OQ4');
 create or replace DATABASE snowflake_documentation FROM LISTING GZSTZ67BY9OQ4;
 GRANT IMPORTED PRIVILEGES ON DATABASE snowflake_documentation  TO ROLE public;
 
-
-
 -- now you have Cortex search for Snowflake documentation available, check it out
 
-show cortex search services in the account;
+show cortex search services in database snowflake_documentation;
 
 -- create semantic view for cortex analyst;
 
-show semantic views in the account;
 
 create or replace semantic view CORTEX_DB.PUBLIC.COST_PERFORMANCE_ASSISTANT
 	tables (
@@ -229,7 +226,8 @@ FROM SPECIFICATION $$
 $$;
 
 
-
+show semantic views in database cortex_db;
+show cortex search services in database snowflake_documentation;
 show agents in account;
 
 
