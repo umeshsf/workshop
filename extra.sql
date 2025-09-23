@@ -128,7 +128,6 @@ savings and performance improvements.'
 
 
 -- NOW CREATE AGENT
-
 CREATE or REPLACE AGENT SNOWFLAKE_INTELLIGENCE.AGENTS.SNOWFLAKE_COSTPERFORMANCE_AGENT
 WITH PROFILE='{ "display_name": "Snowflake Cost Performance Agent" }'
     COMMENT=$$ I am your Snowflake Cost Performance Assistant, designed to help you optimize query
@@ -169,10 +168,39 @@ FROM SPECIFICATION $$
             { "question": "Based on my top 10 slowest queries, can you provide ways to optimize them?"},        
             { "question": "What was the query that is causing performance issues?" },
             { "question": "Which warehouses should be upgraded to Gen 2?" },
-            { "question": "How can I optimize this specific query?" }
+            { "question": "What queries are scanning the most data and how can I reduce that?" }
         ]
     },
     "tools": [
+            {
+         "tool_spec": {
+            "type": "generic",
+            "name": "cortex_email",
+            "description": "This tool is use to send the output of cortex to business user in html format. ",
+            "input_schema": {
+               "type": "object",
+               "properties": {
+                  "body": {
+                    "description": "Use HTML content for the email content. If the content is in other format, translate it to HTML. If body is not provided, summarize the last question and use that as content for the email.",
+                     "type": "string"
+                  },
+                  "recipient_email": {
+                     "description": "If the email is not provided, send it to your_email_address@gmail.com",
+                     "type": "string"
+                  },
+                  "subject": {
+                    "description": " If subject is not provided, use  Snowflake Intelligence Analysis.",
+                     "type": "string"
+                  }
+               },
+               "required": [
+                  "body",
+                  "recipient_email",
+                  "subject"
+               ]
+            }
+         }
+      },
         {
             "tool_spec": {
             "name": "Snowflake_Knowledge_Ext_Documentation",
@@ -202,7 +230,7 @@ FROM SPECIFICATION $$
                           * Suggest using **100** for the Query timeout
                           * Select **Add**
                           * For **Cortex Search Services** option, select **+ Add**
-                          * Provide a **Name**: Cortex\_Knowledge\_Extension\_Snowflake\_Documentation
+                          * Provide a **Name**: Cortex_Knowledge_Extension_Snowflake_Documentation
                           * Provide **Description**:"       
                                   
             }
@@ -222,7 +250,17 @@ FROM SPECIFICATION $$
                 "warehouse": "DEFAULT_WH",
                 "query_timeout": 60
               }
-        }
+        },
+        "cortex_email": {
+            "identifier":"CORTEX_DB.DATA.SEND_EMAIL",
+            "name":"SEND_EMAIL(VARCHAR, VARCHAR, VARCHAR)",
+            "type": "procedure",            
+            "execution_environment": {
+                "type": "warehouse",
+                "warehouse": "DEFAULT_WH",
+                "query_timeout": 60
+              }
+        }        
     }
 }
 $$;
