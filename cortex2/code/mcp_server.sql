@@ -15,7 +15,7 @@ ROLE_RESTRICTION = 'CORTEX_ROLE';
 
 -- copy the token
 /*
-eyJraWQiOiI2MDE5NTk4NTI4ODc2NTU0IiwiYWxnIjoiRVMyNTYifQ.eyJwIjoiMzU4Nzk2MTU2OjM1ODc5NjE2NCIsImlzcyI6IlNGOjEwNDkiLCJleHAiOjE3NjI4ODY2NzZ9.UufORpV28ug6oZUqnz0Xpzw8hScS4RnE0__YYmr-klOPYlkClQk8C6iQuojkFtbuJAVTgcvnmyewn9Y1EgktmA
+xxxxxxxx
 */
 
 
@@ -42,25 +42,25 @@ $$
                 title: "Snowflake Query History"
                 config:
                     warehouse: "cortex_wh"
-                
+
             $$;
 
 
-curl -X POST "https://sfsehol-figma_cortex_wrokshop_xemwyi.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer eyJraWQiOiI2MDE5NTk4NTI4ODc2NTU0IiwiYWxnIjoiRVMyNTYifQ.eyJwIjoiMzU4Nzk2MTU2OjM1ODc5NjE2NCIsImlzcyI6IlNGOjEwNDkiLCJleHAiOjE3NjI4ODY2NzZ9.UufORpV28ug6oZUqnz0Xpzw8hScS4RnE0__YYmr-klOPYlkClQk8C6iQuojkFtbuJAVTgcvnmyewn9Y1EgktmA" --data '{
+curl -X POST "https://sfsehol-figma_cortex_wrokshop_xemwyi.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer xxxxxxxx" --data '{
     "jsonrpc": "2.0",
     "id": 1,
     "method": "initialize",
     "params": {}
   }'
 
-  curl -X POST "https://sfsehol-figma_cortex_wrokshop_xemwyi.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer eyJraWQiOiI2MDE5NTk4NTI4ODc2NTU0IiwiYWxnIjoiRVMyNTYifQ.eyJwIjoiMzU4Nzk2MTU2OjM1ODc5NjE2NCIsImlzcyI6IlNGOjEwNDkiLCJleHAiOjE3NjI4ODY2NzZ9.UufORpV28ug6oZUqnz0Xpzw8hScS4RnE0__YYmr-klOPYlkClQk8C6iQuojkFtbuJAVTgcvnmyewn9Y1EgktmA" --data '{
+  curl -X POST "https://sfsehol-figma_cortex_wrokshop_xemwyi.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer xxxxxxxx" --data '{
     "jsonrpc": "2.0",
     "id": 2,
     "method": "tools/list",
     "params": {}
   }'
 
- curl -X POST "https://sfsehol-figma_cortex_wrokshop_xemwyi.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer eyJraWQiOiI2MDE5NTk4NTI4ODc2NTU0IiwiYWxnIjoiRVMyNTYifQ.eyJwIjoiMzU4Nzk2MTU2OjM1ODc5NjE2NCIsImlzcyI6IlNGOjEwNDkiLCJleHAiOjE3NjI4ODY2NzZ9.UufORpV28ug6oZUqnz0Xpzw8hScS4RnE0__YYmr-klOPYlkClQk8C6iQuojkFtbuJAVTgcvnmyewn9Y1EgktmA" --data '{
+ curl -X POST "https://sfsehol-figma_cortex_wrokshop_xemwyi.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer xxxxxxxx" --data '{
     "jsonrpc": "2.0",
     "id": 2,
     "method": "tools/list",
@@ -72,7 +72,7 @@ curl -X POST "https://sfsehol-figma_cortex_wrokshop_xemwyi.snowflakecomputing.co
   curl -X POST "https://sfsehol-figma_cortex_wrokshop_xemwyi.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
-  --header "Authorization: Bearer eyJraWQiOiI2MDE5NTk4NTI4ODc2NTU0IiwiYWxnIjoiRVMyNTYifQ.eyJwIjoiMzU4Nzk2MTU2OjM1ODc5NjE2NCIsImlzcyI6IlNGOjEwNDkiLCJleHAiOjE3NjI4ODY2NzZ9.UufORpV28ug6oZUqnz0Xpzw8hScS4RnE0__YYmr-klOPYlkClQk8C6iQuojkFtbuJAVTgcvnmyewn9Y1EgktmA" \
+  --header "Authorization: Bearer xxxxxxxx" \
   --data '{
     "jsonrpc": "2.0",
     "id": 12345,
@@ -84,4 +84,3 @@ curl -X POST "https://sfsehol-figma_cortex_wrokshop_xemwyi.snowflakecomputing.co
         }
     }
   }'
-
