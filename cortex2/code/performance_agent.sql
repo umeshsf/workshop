@@ -55,20 +55,20 @@ GRANT USAGE ON DATABASE snowflake_intelligence TO ROLE PUBLIC;
 GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE PUBLIC;
 GRANT USAGE ON SCHEMA snowflake_intelligence.tools TO ROLE PUBLIC;
 
-create or replace warehouse identifier($warehouse_name) 
+create or replace warehouse identifier($warehouse_name)
     AUTO_SUSPEND = 60;
 
 GRANT CREATE AGENT ON SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS TO role identifier($role_name) ;
 
 alter user identifier($current_user) set
-    DEFAULT_ROLE = cortex_role, 
+    DEFAULT_ROLE = cortex_role,
     DEFAULT_WAREHOUSE = cortex_wh;
 
 
 use role cortex_role;
 use snowflake_intelligence.tools;
 
-create or replace semantic view 
+create or replace semantic view
     SNOWFLAKE_INTELLIGENCE.TOOLS.COST_PERFORMANCE_ASSISTANT_SVW
  tables (
   SNOWFLAKE.ACCOUNT_USAGE.QUERY_HISTORY,
@@ -199,7 +199,7 @@ def send_email(session, recipient_email, subject, body):
     try:
         # Escape single quotes in the body
         escaped_body = body.replace("'", "''")
-        
+
         # Execute the system procedure call
         session.sql(f"""
             CALL SYSTEM$SEND_EMAIL(
@@ -210,14 +210,14 @@ def send_email(session, recipient_email, subject, body):
                 'text/html'
             )
         """).collect()
-        
+
         return "Email sent successfully"
     except Exception as e:
         return f"Error sending email: {str(e)}"
 $$;
 
 call snowflake_intelligence.tools.send_email(
-  'umesh.patel@snowflake.com',
+  'your@email.com',
   'Cortex Email',
   'This is testing of email from Snowflake');
 
@@ -225,10 +225,10 @@ call snowflake_intelligence.tools.send_email(
 -- accept terms
 CALL SYSTEM$ACCEPT_LEGAL_TERMS('DATA_EXCHANGE_LISTING', 'GZSTZ67BY9OQ4');
 -- create a database that includes Cortex search
-create or replace database IDENTIFIER('"SNOWFLAKE_DOCUMENTATION"') 
+create or replace database IDENTIFIER('"SNOWFLAKE_DOCUMENTATION"')
     FROM LISTING IDENTIFIER('"GZSTZ67BY9OQ4"');
 -- grant usage to the public so all can use Snowflake documentation
-GRANT IMPORTED PRIVILEGES ON DATABASE SNOWFLAKE_DOCUMENTATION  
+GRANT IMPORTED PRIVILEGES ON DATABASE SNOWFLAKE_DOCUMENTATION
     TO ROLE PUBLIC;
 
 
@@ -242,10 +242,10 @@ to provide personalized, actionable recommendations for your Snowflake environme
 FROM SPECIFICATION $$
 {
     "models": { "orchestration": "auto" },
-    "instructions": { 
-        "response": "You are a Snowflake Data Engineer Assistant. Always provide: Specific recommendations with clear next steps,  
-                    Actual metrics from query history data,   
-                    Prioritized solutions (high-impact first),  
+    "instructions": {
+        "response": "You are a Snowflake Data Engineer Assistant. Always provide: Specific recommendations with clear next steps,
+                    Actual metrics from query history data,
+                    Prioritized solutions (high-impact first),
                     Snowflake best practices  (Gen 2 warehouses, clustering, modern SQL)  ",
         "orchestration": "Orchestration Instruction:
                     For query performance analysis requests:
@@ -254,28 +254,28 @@ FROM SPECIFICATION $$
                     3. Prioritize findings by impact (slowest queries, highest resource usage, most frequent errors)
                     4. Use Snowflake documentation search to reference best practices and specific features
                     5. Provide specific, actionable recommendations with clear next steps
-                    
-                    
+
+
                     For optimization questions:
                     1. Start with the query history data to understand current performance
                     2. Identify bottlenecks and inefficiencies in the data
                     3. Reference Snowflake documentation for feature recommendations (Gen 2 warehouses, clustering, etc.)
                     4. Provide concrete optimization steps with expected improvements
-                    
-                    
+
+
                     For troubleshooting:
                     1. Analyze error patterns and compilation issues from query history
-                    2. Search documentation for specific error resolution guidance  
+                    2. Search documentation for specific error resolution guidance
                     3. Provide step-by-step fixes and prevention strategies
-                    
-                    
+
+
                     Always ground recommendations in actual data from the user's query history.",
          "sample_questions": [
-            { "question": "Based on my top 10 slowest queries, can you provide ways to optimize them?"},        
+            { "question": "Based on my top 10 slowest queries, can you provide ways to optimize them?"},
             { "question": "What was the query that is causing performance issues?" },
             { "question": "Which warehouses should be upgraded to Gen 2?" },
             { "question": "What queries are scanning the most data and how can I reduce that?" },
-            { "question": "Send email to me" }            
+            { "question": "Send email to me" }
         ]
     },
     "tools": [
@@ -319,8 +319,8 @@ FROM SPECIFICATION $$
             "tool_spec": {
             "name": "cost_performance_assistant_semantic_view",
             "type": "cortex_analyst_text_to_sql"   ,
-            "description": " Use this tool to analyze Snowflake query performance and identify optimization opportunities. 
-                            This semantic view provides access to query history data, including execution times, compilation times, 
+            "description": " Use this tool to analyze Snowflake query performance and identify optimization opportunities.
+                            This semantic view provides access to query history data, including execution times, compilation times,
                             bytes scanned, warehouse usage, and error information. Use this tool when users ask about:
 
                           - Slowest running queries and performance bottlenecks
@@ -329,26 +329,26 @@ FROM SPECIFICATION $$
                           - Compilation errors and troubleshooting
                           - Data scanning patterns and efficiency analysis
                           - Historical query trends and usage patterns
-                        
-                        The tool returns structured data about query performance metrics that can be used to provide specific, 
+
+                        The tool returns structured data about query performance metrics that can be used to provide specific,
                         actionable optimization recommendations.
-                        
+
                           * Use the **User's default** for warehouse
                           * Suggest using **100** for the Query timeout
                           * Select **Add**
                           * For **Cortex Search Services** option, select **+ Add**
                           * Provide a **Name**: Cortex_Knowledge_Extension_Snowflake_Documentation
-                          * Provide **Description**:"       
-                                  
+                          * Provide **Description**:"
+
             }
         }
     ],
     "tool_resources": {
-        "Snowflake_Knowledge_Ext_Documentation": {   
-            "id_column": "SOURCE_URL",    
-            "title_column" : "DOCUMENT_TITLE",  
+        "Snowflake_Knowledge_Ext_Documentation": {
+            "id_column": "SOURCE_URL",
+            "title_column" : "DOCUMENT_TITLE",
             "max_results": 10,
-            "name": "SNOWFLAKE_DOCUMENTATION.SHARED.CKE_SNOWFLAKE_DOCS_SERVICE"            
+            "name": "SNOWFLAKE_DOCUMENTATION.SHARED.CKE_SNOWFLAKE_DOCS_SERVICE"
         },
         "cost_performance_assistant_semantic_view": {
             "semantic_view": "SNOWFLAKE_INTELLIGENCE.TOOLS.COST_PERFORMANCE_ASSISTANT_SVW",
@@ -361,13 +361,13 @@ FROM SPECIFICATION $$
         "cortex_email": {
             "identifier":"snowflake_intelligence.tools.send_email",
             "name":"SEND_EMAIL(VARCHAR, VARCHAR, VARCHAR)",
-            "type": "procedure",            
+            "type": "procedure",
             "execution_environment": {
                 "type": "warehouse",
                 "warehouse": "CORTEX_WH",
                 "query_timeout": 60
               }
-        }        
+        }
     }
 }
 $$;

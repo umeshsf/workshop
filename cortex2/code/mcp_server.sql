@@ -46,21 +46,21 @@ $$
             $$;
 
 
-curl -X POST "https://sfsehol-figma_cortex_wrokshop_xemwyi.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer xxxxxxxx" --data '{
+curl -X POST "https://orgname-accountname.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer xxxxxxxx" --data '{
     "jsonrpc": "2.0",
     "id": 1,
     "method": "initialize",
     "params": {}
   }'
 
-  curl -X POST "https://sfsehol-figma_cortex_wrokshop_xemwyi.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer xxxxxxxx" --data '{
+  curl -X POST "https://orgname-accountname.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer xxxxxxxx" --data '{
     "jsonrpc": "2.0",
     "id": 2,
     "method": "tools/list",
     "params": {}
   }'
 
- curl -X POST "https://sfsehol-figma_cortex_wrokshop_xemwyi.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer xxxxxxxx" --data '{
+ curl -X POST "https://orgname-accountname.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" --header 'Content-Type: application/json' --header 'Accept: application/json' --header "Authorization: Bearer xxxxxxxx" --data '{
     "jsonrpc": "2.0",
     "id": 2,
     "method": "tools/list",
@@ -69,7 +69,7 @@ curl -X POST "https://sfsehol-figma_cortex_wrokshop_xemwyi.snowflakecomputing.co
 
 
 
-  curl -X POST "https://sfsehol-figma_cortex_wrokshop_xemwyi.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" \
+  curl -X POST "https://orgname-accountname.snowflakecomputing.com/api/v2/databases/snowflake_intelligence/schemas/tools/mcp-servers/snowflake_mcp_server" \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
   --header "Authorization: Bearer xxxxxxxx" \

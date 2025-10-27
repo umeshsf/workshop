@@ -276,4 +276,4 @@ create or replace semantic view HR_SEMANTIC_VIEW
   SHOW SEMANTIC DIMENSIONS;
 
   -- Show metrics for each semantic view
-  SHOW SEMANTIC METRICS; 
+  SHOW SEMANTIC METRICS;

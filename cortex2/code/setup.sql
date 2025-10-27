@@ -1,7 +1,7 @@
 use role accountadmin;
 
 -- set verified email
-set email_address='umesh.patel@snowflake.com';
+set email_address='your@emailaddress.com';
 ALTER USER USER SET EMAIL = $email_address;
 SELECT SYSTEM$START_USER_EMAIL_VERIFICATION('"USER"');
 
@@ -68,13 +68,13 @@ GRANT USAGE ON DATABASE snowflake_intelligence TO ROLE PUBLIC;
 GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE PUBLIC;
 GRANT USAGE ON SCHEMA snowflake_intelligence.tools TO ROLE PUBLIC;
 
-create or replace warehouse identifier($warehouse_name) 
+create or replace warehouse identifier($warehouse_name)
     AUTO_SUSPEND = 60;
 
 GRANT CREATE AGENT ON SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS TO role identifier($role_name) ;
 
 alter user identifier($current_user) set
-    DEFAULT_ROLE = cortex_role, 
+    DEFAULT_ROLE = cortex_role,
     DEFAULT_WAREHOUSE = cortex_wh;
 
 CREATE OR REPLACE API INTEGRATION git_api_integration
@@ -91,6 +91,3 @@ ENABLED = true;
 CREATE OR REPLACE NOTIFICATION INTEGRATION ai_email_int
   TYPE=EMAIL
   ENABLED=TRUE;
-
-
-
