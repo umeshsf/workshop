@@ -84,8 +84,9 @@ CREATE OR REPLACE API INTEGRATION git_api_integration
 
 
 CREATE OR REPLACE EXTERNAL ACCESS INTEGRATION Snowflake_intelligence_ExternalAccess_Integration
-ALLOWED_NETWORK_RULES = (Snowflake_intelligence_WebAccessRule)
+ALLOWED_NETWORK_RULES = (policy_db.policies.Snowflake_intelligence_WebAccessRule)
 ENABLED = true;
+
 
 
 CREATE OR REPLACE NOTIFICATION INTEGRATION ai_email_int
