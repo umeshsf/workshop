@@ -68,8 +68,11 @@ GRANT USAGE ON DATABASE snowflake_intelligence TO ROLE PUBLIC;
 GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE PUBLIC;
 GRANT USAGE ON SCHEMA snowflake_intelligence.tools TO ROLE PUBLIC;
 
-create or replace warehouse identifier($warehouse_name)
-    AUTO_SUSPEND = 60;
+create or replace warehouse identifier($warehouse_name) 
+WAREHOUSE_SIZE = LARGE
+RESOURCE_CONSTRAINT = STANDARD_GEN_2
+AUTO_SUSPEND = 300
+AUTO_RESUME = TRUE;
 
 GRANT CREATE AGENT ON SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS TO role identifier($role_name) ;
 
