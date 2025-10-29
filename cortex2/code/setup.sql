@@ -95,3 +95,40 @@ ENABLED = true;
 CREATE OR REPLACE NOTIFICATION INTEGRATION ai_email_int
   TYPE=EMAIL
   ENABLED=TRUE;
+
+
+/*  Instructions  */
+
+Go to Project,  Workspaces 
+Click on Down Arrow, and click on Create Workspace from GIT repository
+Enter as following
+  Repository url : https://github.com/umeshsf/workshop
+  Workspace name: cortex, (or whatever you like)
+  API integration : GIT_API_INTEGRATION
+  Choose Public Repo
+  Click Create. 
+
+Now all codes are avaialble under
+
+Cortex2/code
+
+1. Execute data_ingestion.sql
+2. Execute semantic_view.sql
+3. execute cortex_search.sql
+4. Execute cortex_tools.sql
+5. execute cortex_agents.sql
+6. Click on AI/ML , click on Snowflake Intelligence
+
+Start prompt like below:*/
+
+Show me monthly sales trends for 2025 with visualizations. Which months had the highest revenue?
+ Why was there a big increase from May to June?
+
+Who are our top 10 sales reps this year, what is their tenure, and are they still with the company?
+What are our top 5 vendors in the last 5 years? Check our vendor management policy and see if we are following procurement guidelines for all transactions. Highlight any issues within each vendor.
+
+Get the latest information from the following website and analyze its potential impact on our sales forecast for various product categories. Then send me an executive summary email.
+https://www.bea.gov/news/2025/us-international-trade-goods-and-services-july-2025
+
+
+*/
