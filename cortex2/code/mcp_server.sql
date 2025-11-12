@@ -42,7 +42,17 @@ $$
                 title: "Snowflake Query History"
                 config:
                     warehouse: "cortex_wh"
-
+              - title: "Agent V1"
+                identifier: "sales_intelligence.tools.SNOWFLAKE_COSTPERFORMANCE_AGENT"
+                name: "cost_optimizer_agent"
+                type: "CORTEX_AGENT_RUN"
+                description: "AGent to guide optimize code reduce cost"
+              - title: "SQL Execution"
+                name: "sql_exec_tool"
+                type: "SYSTEM_EXECUTE_SQL"
+                description: "execute sql queries against the connected Snowflake "
+                config:
+                 warehouse: CORTEX_WH
             $$;
 
 
