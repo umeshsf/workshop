@@ -1,5 +1,5 @@
 use role cortex_role;
-
+show warehouses;
 create or replace schema workshop_db.unstructured_data;
 
     -- ========================================================================
@@ -112,3 +112,6 @@ CREATE OR REPLACE CORTEX SEARCH SERVICE SNOWFLAKE_INTELLIGENCE.TOOLS.EMPLOYEE_SE
       HIRE_DATE
     FROM WORKSHOP_DB.HR.EMPLOYEE_DIM
   );
+
+
+show cortex search services;
