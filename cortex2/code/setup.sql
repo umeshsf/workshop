@@ -64,21 +64,20 @@ CREATE SCHEMA IF NOT EXISTS snowflake_intelligence.agents;
 CREATE SCHEMA IF NOT EXISTS snowflake_intelligence.tools;
 -- Allow anyone to see the agents in this schema
 -- Please note that we are granting access to the public role,  so all users can see  the agents
-GRANT USAGE ON DATABASE snowflake_intelligence TO ROLE PUBLIC;
-GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE PUBLIC;
-GRANT USAGE ON SCHEMA snowflake_intelligence.tools TO ROLE PUBLIC;
+GRANT USAGE ON DATABASE snowflake_intelligence TO ROLE identifier($role_name);
+GRANT USAGE ON SCHEMA snowflake_intelligence.agents TO ROLE identifier($role_name);
+GRANT USAGE ON SCHEMA snowflake_intelligence.tools TO ROLE identifier($role_name);
 
 create or replace warehouse identifier($warehouse_name) 
-WAREHOUSE_SIZE = LARGE
+WAREHOUSE_SIZE = MEDIUM
 RESOURCE_CONSTRAINT = STANDARD_GEN_2
 AUTO_SUSPEND = 300
 AUTO_RESUME = TRUE;
 
 GRANT CREATE AGENT ON SCHEMA SNOWFLAKE_INTELLIGENCE.AGENTS TO role identifier($role_name) ;
+grant all on warehouse cortex_wh to role identifier($role_name);
 
-alter user identifier($current_user) set
-    DEFAULT_ROLE = cortex_role,
-    DEFAULT_WAREHOUSE = cortex_wh;
+
 
 CREATE OR REPLACE API INTEGRATION git_api_integration
         API_PROVIDER = git_https_api
@@ -96,7 +95,12 @@ CREATE OR REPLACE NOTIFICATION INTEGRATION ai_email_int
   TYPE=EMAIL
   ENABLED=TRUE;
 
+-- optional
 
+alter user identifier($current_user) set
+    DEFAULT_ROLE = cortex_role,
+    DEFAULT_WAREHOUSE = cortex_wh;
+ 
 /*  NEXT STEPS  */
 
 Go to Project,  Workspaces 
