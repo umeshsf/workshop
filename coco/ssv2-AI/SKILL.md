@@ -42,7 +42,7 @@ The Python SDK references the default pipe using this naming convention:
 
 ### Background streaming
 
-Unlike the quickstart (which blocks for N minutes), this skill runs the streaming script **in the background** for 30 minutes. This lets the presenter immediately move on to building the AI layer while data keeps flowing. The wow factor: re-ask the same question later and the numbers have changed.
+This skill runs the streaming script **in the background** for 30 minutes. This lets the presenter immediately move on to building the AI layer while data keeps flowing. The wow factor: re-ask the same question later and the numbers have changed.
 
 ### Direct SQL for speed
 
